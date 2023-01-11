@@ -13,7 +13,6 @@ import {
   Typography,
   InputLabel,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 const style = {
   position: "absolute",
   top: "50%",
@@ -29,7 +28,6 @@ function Edit({ view, handleClose1, open1, studentId }) {
   const [classname, setClassname] = React.useState("");
   const [division, setDivision] = React.useState("");
   const { register, handleSubmit, reset } = useForm();
-  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     fetch(`https://resolute-ai.onrender.com/students/${studentId}`, {

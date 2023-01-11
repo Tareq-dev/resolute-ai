@@ -2,25 +2,21 @@ import React, { useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { red } from "@mui/material/colors";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import GoogleLogin from "../../components/GoogleLogin";
 import auth from "./../../firebase.auth";
-
 
 const primary = red[500]; // #f44336
 const white = red[50]; // #f44336
 function SignUp() {
-  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const navigate = useNavigate();
-  const location = useLocation();
-  let from = location.state?.from?.pathname || "/add-student";
 
   if (user) {
-    navigate(from, { replace: true });
+    navigate("/add-student");
   }
 
   return (
